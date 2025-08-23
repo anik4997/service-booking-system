@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Booking;
 
 class BookingController extends Controller
 {
@@ -17,7 +18,6 @@ class BookingController extends Controller
             'service_id' => 'required|exists:services,id',
             'booking_date' => 'required|date|after_or_equal:today'
         ]);
-
         return Booking::create([
             'user_id' => $request->user()->id,
             'service_id' => $data['service_id'],
